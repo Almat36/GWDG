@@ -1,16 +1,12 @@
 # For running the code
-h5py
-lalsuite==6.53
+PyCBC
 matplotlib
 numpy
-pandas
-PyCBC==1.13.6
-requests
-scipy
-six
-tqdm
+time 
+random
+math
+lal
+h5py
+json
+antropy   #Optionally, if you want to use calculation of spectral entropy of GWs
 
-# For building the docs
-sphinx
-sphinx-rtd-theme
-sphinxcontrib-napoleon
