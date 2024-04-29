@@ -289,7 +289,8 @@ def entropy(data, window_size, step, sf, duration, plot=True):
     for det in ('H1', 'L1'):
         j = 0
         for k in range(window_size, sf * duration, step):
-            entropy_values[det].append(ant.spectral_entropy(data[det][j:k], sf=sf, method='fft', normalize=True))            j += 1
+            entropy_values[det].append(ant.spectral_entropy(data[det][j:k], sf=sf, method='fft', normalize=True))
+            j += 1
 
     if plot:
         plt.figure(figsize=(12, 4))
