@@ -5,14 +5,15 @@ Contents:
 
 Main Script (generate_signals.py):
 The main script for generating gravitational wave signals.
-Utilizes the generation_utils.py module for signal generation and manipulation.
-Utilizes the matplotlib, numpy, progressbar, and custom modules for functionality.
+
 Utility Module (generation_utils.py):
 Contains utility functions for signal generation and manipulation.
 Includes functions for injecting signals, generating waveforms, calculating entropy, and normalizing signals.
+
 Generated Data File ({CBC_class}_{snr}_{num_signals}.hdf5):
 HDF5 file containing the generated gravitational wave signals and associated metadata.
 Signals are stored along with corresponding parameters, waveforms, noise, and entropy calculations.
+
 Usage:
 
 Setup:
@@ -29,9 +30,5 @@ Notes:
 The script supports different classes of compact binary coalescence (CBC) events, such as BNS (binary neutron star), NSBH (neutron star black hole), and BBH (binary black hole).
 Signals are generated with specified signal-to-noise ratio (snr) and other parameters such as mass range, spin range, and inclination range.
 Progress is displayed using a progress bar during signal generation.
-Contributors:
 
-Almat Akhmetali (Author)
-License:
-
-The code is provided under an appropriate open-source license (not specified in the provided code).
+The code in this repository is developed by Almat Akhmetali. It is distributed under the GPL-3.0 license, which means in particular that it is provided as is, without any warranty, liability, or guarantees regarding its correctness.
