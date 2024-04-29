@@ -16,7 +16,7 @@ Signals are stored along with corresponding parameters, waveforms, noise, and en
 #Quickstart:
 As of now, this project is not a "proper" Python package, but only a collection of scripts, which don't need to be installed. Therefore, simply clone the repository:
 ```
-git clone git@github.com:Almat36/GWDG.git 
+git clone https://github.com/Almat36/GWDG.git
 ```
 Ensure your Python environment fulfills all the requirements specified in requirements.txt. Please note that due to the dependence on PyCBC, this code currently only works in Linux/MacOS. Now, you should be able to generate your first data sample by simply running:
 ```
