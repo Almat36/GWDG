@@ -13,7 +13,7 @@ Includes functions for injecting signals, generating waveforms, calculating entr
 Generated data saved in HDF5 format. HDF5 file contains the generated gravitational wave signals and associated metadata.
 Signals are stored along with corresponding parameters, waveforms, noise, and entropy calculations.
 
-#Quickstart:
+# Quickstart:
 As of now, this project is not a "proper" Python package, but only a collection of scripts, which don't need to be installed. Therefore, simply clone the repository:
 ```
 git clone https://github.com/Almat36/GWDG.git
