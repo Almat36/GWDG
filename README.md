@@ -15,12 +15,13 @@ Signals are stored along with corresponding parameters, waveforms, noise, and en
 
 #Quickstart:
 As of now, this project is not a "proper" Python package, but only a collection of scripts, which don't need to be installed. Therefore, simply clone the repository:
-```python
-git clone git@github.com:Almat36/GWDG.git ; cd GWDG
+```
+git clone git@github.com:Almat36/GWDG.git 
 ```
 Ensure your Python environment fulfills all the requirements specified in requirements.txt. Please note that due to the dependence on PyCBC, this code currently only works in Linux/MacOS. Now, you should be able to generate your first data sample by simply running:
+```
 python3 generate_dataset.py
-
+```
 The script supports different classes of compact binary coalescence (CBC) events, such as BNS (binary neutron star), NSBH (neutron star black hole), and BBH (binary black hole).
 Signals are generated with specified signal-to-noise ratio (snr) and other parameters such as mass range, spin range, and inclination range.
 Progress is displayed using a progress bar during signal generation.
