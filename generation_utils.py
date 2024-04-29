@@ -119,10 +119,12 @@ def generate_waveform(param_list, plot = False):
     Returns:
         dict: Dictionary containing the generated waveforms for detectors 'H1' and 'L1'.
     """
-    seconds_before_event = 4
-    seconds_after_event = 2     
+    for attempt in range(100):
+        try:
+    		seconds_before_event = 4
+    		seconds_after_event = 2     
     
-    hp, hc = get_td_waveform(approximant = param_list['apx'],
+    		hp, hc = get_td_waveform(approximant = param_list['apx'],
                                     mass1 = param_list['m1'],
 				    mass2 = param_list['m2'],
 				    spin1z = param_list['x1'],
@@ -133,39 +135,40 @@ def generate_waveform(param_list, plot = False):
 				    delta_t = 1.0 / param_list['sf'],
 				    f_lower = 20)
 
-    det_h1 = Detector('H1')
-    det_l1 = Detector('L1')
+   		det_h1 = Detector('H1')
+    		det_l1 = Detector('L1')
 
-    waveform_h1 = det_h1.project_wave(hp, hc, param_list['ra'], param_list['dec'], param_list['pol'])
-    waveform_l1 = det_l1.project_wave(hp, hc, param_list['ra'], param_list['dec'], param_list['pol'])
+		waveform_h1 = det_h1.project_wave(hp, hc, param_list['ra'], param_list['dec'], param_list['pol'])
+    		waveform_l1 = det_l1.project_wave(hp, hc, param_list['ra'], param_list['dec'], param_list['pol'])
 	
-    hp_h1 = resize_signal(waveform_h1, seconds_before_event, seconds_after_event, param_list['sf'])
-    hp_l1 = resize_signal(waveform_l1, seconds_before_event, seconds_after_event, param_list['sf'])
+    		hp_h1 = resize_signal(waveform_h1, seconds_before_event, seconds_after_event, param_list['sf'])
+    		hp_l1 = resize_signal(waveform_l1, seconds_before_event, seconds_after_event, param_list['sf'])
 
-    hp_h1 = normalize_signal(hp_h1, -100, 100)
-    hp_l1 = normalize_signal(hp_l1, -100, 100)
+    		hp_h1 = normalize_signal(hp_h1, -100, 100)
+    		hp_l1 = normalize_signal(hp_l1, -100, 100)
 
-    sig_h1 = TimeSeries(hp_h1, delta_t=1.0/param_list['sf'])
-    sig_l1 = TimeSeries(hp_l1, delta_t=1.0/param_list['sf'])
+    		sig_h1 = TimeSeries(hp_h1, delta_t=1.0/param_list['sf'])
+    		sig_l1 = TimeSeries(hp_l1, delta_t=1.0/param_list['sf'])
                           
-    if plot:
-        fig, axs = plt.subplots(2, 1, figsize=(10, 6), sharex=True)    
+    		if plot:
+        		fig, axs = plt.subplots(2, 1, figsize=(10, 6), sharex=True)    
 
-        axs[0].plot(sig_h1.sample_times, sig_h1, color='royalblue', label='Hanford')
-        axs[0].set_ylabel('Strain')
-        axs[0].set_xlim(2, 6)
-        #axs[0].set_xticks(np.arange(0, 4.1, 0.5))
-        axs[0].legend()
+        		axs[0].plot(sig_h1.sample_times, sig_h1, color='royalblue', label='Hanford')
+        		axs[0].set_ylabel('Strain')
+        		axs[0].set_xlim(2, 6)
+        		#axs[0].set_xticks(np.arange(0, 4.1, 0.5))
+        		axs[0].legend()
 
-        axs[1].plot(sig_l1.sample_times, sig_l1, color='firebrick', label='Livingston')
-        axs[1].set_ylabel('Strain')
-        axs[1].set_xlabel('Time (s)')
-        axs[1].set_xlim(2, 6)
-        #axs[1].set_xticks(np.arange(0, 4.1, 0.5))
-        axs[1].legend()
+        		axs[1].plot(sig_l1.sample_times, sig_l1, color='firebrick', label='Livingston')
+        		axs[1].set_ylabel('Strain')
+        		axs[1].set_xlabel('Time (s)')
+        		axs[1].set_xlim(2, 6)
+        		#axs[1].set_xticks(np.arange(0, 4.1, 0.5))
+        		axs[1].legend()
 
-        #plt.show()
-
+        		#plt.show()
+        except RuntimeError as e:
+                print(f"Attempt {attempt}: Waveform generation failed - {e}")		
     return {'H1':sig_h1, 'L1':sig_l1}
 
 def inject_signal(waveform_dict, inj_snr, param_list, plot=False):
