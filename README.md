@@ -22,7 +22,7 @@ Ensure your Python environment fulfills all the requirements specified in requir
 ```
 python3 generate_dataset.py
 ```
-![alt text](https://github.com/Almat36/GWDG/blob/main/Example.png?raw=true)
+![alt text](https://github.com/Almat36/GWDG/blob/main/Example2.png?raw=true)
 The script supports different classes of compact binary coalescence (CBC) events, such as BNS (binary neutron star), NSBH (neutron star black hole), and BBH (binary black hole).
 Signals are generated with specified signal-to-noise ratio (snr) and other parameters such as mass range, spin range, and inclination range.
 Progress is displayed using a progress bar during signal generation.
